@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍝 Migliori Ristoranti Romani a Roma / Best Roman Restaurants in Rome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section {
+            margin-bottom: 25px;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.9), rgba(220, 20, 60, 0.9));
+            color: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .welcome-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .welcome-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .toggle-button {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+            font-size: 1em;
+        }
+
+        .toggle-button:hover {
+            background: linear-gradient(135deg, #DC143C, #8B0000);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: #8B0000;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .restaurants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .restaurant-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #8B0000;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .restaurant-name {
+            color: #8B0000;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+
+        .rating-number {
+            background: #8B0000;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .address {
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .specialties {
+            margin-bottom: 20px;
+        }
+
+        .specialties h4 {
+            color: #8B0000;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .dish-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .dish {
+            background: linear-gradient(135deg, #FFE4B5, #DEB887);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #8B4513;
+            font-weight: 500;
+        }
+
+        .map-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .map-button:hover {
+            background: linear-gradient(135deg, #DC143C, #8B0000);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .lang-en {
+            display: none;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .restaurants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-toggle">
+            <button class="toggle-button" onclick="toggleLanguage()">
+                <span class="lang-it">🇺🇸 Switch to English</span>
+                <span class="lang-en">🇮🇹 Passa all'Italiano</span>
+            </button>
+        </div>
+
+        <div class="welcome-section">
+            <div class="welcome-card">
+                <h2 class="lang-it">🏛️ Benvenuti al Colosseum Apartment</h2>
+                <h2 class="lang-en">🏛️ Welcome to Colosseum Apartment</h2>
+                <p class="lang-it">Siamo felici di avervi come nostri ospiti! Abbiamo selezionato per voi i migliori ristoranti dove gustare l'autentica cucina romana. Buon soggiorno e... buon appetito!</p>
+                <p class="lang-en">We're delighted to have you as our guests! We've selected the best restaurants where you can enjoy authentic Roman cuisine. Have a wonderful stay and... buon appetito!</p>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1 class="lang-it">🍝 Migliori Ristoranti Romani</h1>
+            <h1 class="lang-en">🍝 Best Roman Restaurants</h1>
+            <p class="lang-it">Scopri l'autentica cucina tradizionale di Roma</p>
+            <p class="lang-en">Discover authentic traditional Roman cuisine</p>
+        </div>
+
+        <div class="restaurants-grid">
+            <div class="restaurant-card">
+                <div class="restaurant-name">Da Enzo al 29</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.8</div>
+                </div>
+                <div class="address">Via dei Vascellari, 29, Trastevere</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Carbonara</span>
+                        <span class="dish">Amatriciana</span>
+                        <span class="dish">Cacio e Pepe</span>
+                        <span class="dish">Saltimbocca</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+dei+Vascellari+29+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Checchino dal 1887</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.7</div>
+                </div>
+                <div class="address">Via di Monte Testaccio, 30, Testaccio</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Coda alla Vaccinara</span>
+                        <span class="dish">Trippa alla Romana</span>
+                        <span class="dish">Abbacchio</span>
+                        <span class="dish">Maritozzi</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+di+Monte+Testaccio+30+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Armando al Pantheon</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.6</div>
+                </div>
+                <div class="address">Salita de' Crescenzi, 31, Centro Storico</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Tonnarelli</span>
+                        <span class="dish">Saltimbocca</span>
+                        <span class="dish">Carciofi alla Giudia</span>
+                        <span class="dish">Supplì</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Salita+de+Crescenzi+31+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Flavio al Velavevodetto</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.9</div>
+                </div>
+                <div class="address">Via di Monte Testaccio, 97, Testaccio</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Carbonara</span>
+                        <span class="dish">Gricia</span>
+                        <span class="dish">Amatriciana</span>
+                        <span class="dish">Cacio e Pepe</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+di+Monte+Testaccio+97+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Da Felice</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.5</div>
+                </div>
+                <div class="address">Via Mastro Giorgio, 29, Testaccio</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Cacio e Pepe</span>
+                        <span class="dish">Pajata</span>
+                        <span class="dish">Abbacchio</span>
+                        <span class="dish">Carciofi</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+Mastro+Giorgio+29+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Piperno</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.4</div>
+                </div>
+                <div class="address">Via Monte de' Cenci, 9, Ghetto Ebraico</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Carciofi alla Giudia</span>
+                        <span class="dish">Coda alla Vaccinara</span>
+                        <span class="dish">Baccalà</span>
+                        <span class="dish">Maritozzi</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+Monte+de+Cenci+9+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Trattoria Monti</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.7</div>
+                </div>
+                <div class="address">Via di San Vito, 13, Esquilino</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Passatelli</span>
+                        <span class="dish">Tortellini</span>
+                        <span class="dish">Carbonara</span>
+                        <span class="dish">Tiramisù</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+di+San+Vito+13+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">Il Sorpasso</div>
+                <div class="rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-number">4.6</div>
+                </div>
+                <div class="address">Via Properzio, 31, Prati</div>
+                <div class="specialties">
+                    <h4 class="lang-it">Specialità:</h4>
+                    <h4 class="lang-en">Specialties:</h4>
+                    <div class="dish-list">
+                        <span class="dish">Supplì</span>
+                        <span class="dish">Carbonara</span>
+                        <span class="dish">Maritozzi</span>
+                        <span class="dish">Trapizzino</span>
+                    </div>
+                </div>
+                <a href="https://maps.google.com/?q=Via+Properzio+31+Roma" class="map-button" target="_blank">
+                    <span class="lang-it">📍 Vai su Maps</span>
+                    <span class="lang-en">📍 Open in Maps</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="lang-it">🇮🇹 Buon appetito! La vera Roma a tavola 🇮🇹</p>
+            <p class="lang-en">🇮🇹 Buon appetito! Authentic Rome at the table 🇮🇹</p>
+            <p class="lang-it">Aggiornato: Agosto 2025</p>
+            <p class="lang-en">Updated: August 2025</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'it';
+
+        function toggleLanguage() {
+            const italianElements = document.querySelectorAll('.lang-it');
+            const englishElements = document.querySelectorAll('.lang-en');
+            
+            if (currentLang === 'it') {
+                // Switch to English
+                italianElements.forEach(el => el.style.display = 'none');
+                englishElements.forEach(el => el.style.display = 'block');
+                currentLang = 'en';
+                document.documentElement.lang = 'en';
+            } else {
+                // Switch to Italian
+                englishElements.forEach(el => el.style.display = 'none');
+                italianElements.forEach(el => el.style.display = 'block');
+                currentLang = 'it';
+                document.documentElement.lang = 'it';
+            }
+        }
+    </script>
+</body>
+</html>
