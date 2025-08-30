@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍝 Migliori Ristoranti Romani a Roma / Best Roman Restaurants in Rome</title>
+    <title>🏛️ Guida Completa Roma - Colosseum Apartment</title>
     <style>
         * {
             margin: 0;
@@ -30,27 +30,27 @@
         }
 
         .welcome-section {
-            margin-bottom: 25px;
+            margin-bottom: 40px;
         }
 
         .welcome-card {
             background: linear-gradient(135deg, rgba(139, 0, 0, 0.9), rgba(220, 20, 60, 0.9));
             color: white;
             border-radius: 20px;
-            padding: 30px 25px;
+            padding: 40px 25px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             border: 3px solid rgba(255, 215, 0, 0.3);
         }
 
-        .welcome-card h2 {
-            font-size: 1.8em;
+        .welcome-card h1 {
+            font-size: 2.5em;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .welcome-card p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             line-height: 1.6;
             opacity: 0.95;
             font-style: italic;
@@ -75,6 +75,81 @@
             box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
         }
 
+        /* HOMEPAGE STYLES */
+        .homepage {
+            display: block;
+        }
+
+        .main-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .menu-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: #8B0000;
+        }
+
+        .menu-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .menu-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #8B0000;
+            margin-bottom: 15px;
+        }
+
+        .menu-description {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        /* SECTIONS STYLES */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #666, #888);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #888, #666);
+            transform: translateY(-2px);
+        }
+
         .header {
             text-align: center;
             background: rgba(255, 255, 255, 0.95);
@@ -97,14 +172,29 @@
             font-style: italic;
         }
 
-        .restaurants-grid {
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            background: rgba(139, 0, 0, 0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .places-grid, .restaurants-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
-            margin-bottom: 30px;
         }
 
-        .restaurant-card {
+        .place-card, .restaurant-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 25px;
@@ -113,14 +203,14 @@
             border-left: 5px solid #8B0000;
         }
 
-        .restaurant-card:hover {
+        .place-card:hover, .restaurant-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.25);
         }
 
-        .restaurant-name {
+        .place-name, .restaurant-name {
             color: #8B0000;
-            font-size: 1.5em;
+            font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -152,23 +242,29 @@
             font-style: italic;
         }
 
-        .specialties {
+        .description {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .highlights, .specialties {
             margin-bottom: 20px;
         }
 
-        .specialties h4 {
+        .highlights h4, .specialties h4 {
             color: #8B0000;
             margin-bottom: 10px;
             font-size: 1.1em;
         }
 
-        .dish-list {
+        .highlight-list, .dish-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .dish {
+        .highlight, .dish {
             background: linear-gradient(135deg, #FFE4B5, #DEB887);
             padding: 5px 12px;
             border-radius: 20px;
@@ -195,6 +291,176 @@
             box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
         }
 
+        .price-info {
+            background: rgba(34, 139, 34, 0.1);
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #228B22;
+        }
+
+        /* EMERGENCY NUMBERS STYLES */
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .emergency-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left: 5px solid #DC143C;
+            transition: transform 0.3s ease;
+        }
+
+        .emergency-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .emergency-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .emergency-title {
+            color: #8B0000;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .emergency-number {
+            background: linear-gradient(135deg, #DC143C, #8B0000);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .emergency-number:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+        }
+
+        .emergency-description {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        /* REVIEW REQUEST STYLES */
+        .review-request {
+            margin-bottom: 30px;
+        }
+
+        .review-reminder {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 192, 203, 0.9));
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 15px;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .review-reminder:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            border-color: rgba(255, 105, 180, 0.5);
+        }
+
+        .review-reminder-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #8B0000;
+        }
+
+        .review-icon-small {
+            font-size: 1.5em;
+        }
+
+        .review-arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .review-reminder.expanded .review-arrow {
+            transform: rotate(180deg);
+        }
+
+        .review-card {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 192, 203, 0.9));
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .review-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .review-card h3 {
+            color: #8B0000;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .review-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .review-stars {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .review-thanks {
+            color: #8B0000;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 10px !important;
+        }
+
         .footer {
             text-align: center;
             background: rgba(255, 255, 255, 0.9);
@@ -213,16 +479,28 @@
         }
 
         @media (max-width: 768px) {
-            .restaurants-grid {
+            .main-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .places-grid, .restaurants-grid, .emergency-grid {
                 grid-template-columns: 1fr;
             }
             
-            .header h1 {
+            .header h1, .welcome-card h1 {
                 font-size: 2em;
             }
             
             .container {
                 padding: 15px;
+            }
+
+            .menu-card {
+                padding: 30px 20px;
+            }
+
+            .menu-icon {
+                font-size: 3em;
             }
         }
     </style>
@@ -236,211 +514,777 @@
             </button>
         </div>
 
-        <div class="welcome-section">
-            <div class="welcome-card">
-                <h2 class="lang-it">🏛️ Benvenuti al Colosseum Apartment</h2>
-                <h2 class="lang-en">🏛️ Welcome to Colosseum Apartment</h2>
-                <p class="lang-it">Siamo felici di avervi come nostri ospiti! Abbiamo selezionato per voi i migliori ristoranti dove gustare l'autentica cucina romana. Buon soggiorno e... buon appetito!</p>
-                <p class="lang-en">We're delighted to have you as our guests! We've selected the best restaurants where you can enjoy authentic Roman cuisine. Have a wonderful stay and... buon appetito!</p>
+        <!-- HOMEPAGE -->
+        <div id="homepage" class="homepage">
+            <div class="welcome-section">
+                <div class="welcome-card">
+                    <h1 class="lang-it">🏛️ Benvenuti al Colosseum Apartment</h1>
+                    <h1 class="lang-en">🏛️ Welcome to Colosseum Apartment</h1>
+                    <p class="lang-it">La vostra guida completa a Roma! Scoprite i migliori ristoranti, i luoghi più belli e tutte le informazioni utili per un soggiorno perfetto nella Città Eterna.</p>
+                    <p class="lang-en">Your complete guide to Rome! Discover the best restaurants, most beautiful places and all useful information for a perfect stay in the Eternal City.</p>
+                </div>
+            </div>
+
+            <div class="main-menu">
+                <div class="menu-card" onclick="showSection('restaurants')">
+                    <span class="menu-icon">🍝</span>
+                    <div class="menu-title lang-it">Ristoranti</div>
+                    <div class="menu-title lang-en">Restaurants</div>
+                    <div class="menu-description lang-it">I migliori ristoranti romani dove gustare l'autentica cucina tradizionale della Capitale.</div>
+                    <div class="menu-description lang-en">The best Roman restaurants to taste authentic traditional cuisine of the Capital.</div>
+                </div>
+
+                <div class="menu-card" onclick="showSection('places')">
+                    <span class="menu-icon">🏛️</span>
+                    <div class="menu-title lang-it">Luoghi da Visitare</div>
+                    <div class="menu-title lang-en">Places to Visit</div>
+                    <div class="menu-description lang-it">Monumenti iconici, musei straordinari, quartieri autentici e gioielli nascosti di Roma.</div>
+                    <div class="menu-description lang-en">Iconic monuments, extraordinary museums, authentic neighborhoods and hidden gems of Rome.</div>
+                </div>
+
+                <div class="menu-card" onclick="showSection('emergency')">
+                    <span class="menu-icon">🚨</span>
+                    <div class="menu-title lang-it">Numeri Utili</div>
+                    <div class="menu-title lang-en">Emergency Numbers</div>
+                    <div class="menu-description lang-it">Numeri di emergenza e contatti utili per ogni necessità durante il vostro soggiorno.</div>
+                    <div class="menu-description lang-en">Emergency numbers and useful contacts for every need during your stay.</div>
+                </div>
             </div>
         </div>
 
-        <div class="header">
-            <h1 class="lang-it">🍝 Migliori Ristoranti Romani</h1>
-            <h1 class="lang-en">🍝 Best Roman Restaurants</h1>
-            <p class="lang-it">Scopri l'autentica cucina tradizionale di Roma</p>
-            <p class="lang-en">Discover authentic traditional Roman cuisine</p>
+        <!-- SEZIONE RISTORANTI -->
+        <div id="restaurants" class="section">
+            <button class="back-button" onclick="showHomepage()">
+                <span class="lang-it">← Torna al Menu</span>
+                <span class="lang-en">← Back to Menu</span>
+            </button>
+
+            <div class="header">
+                <h1 class="lang-it">🍝 Migliori Ristoranti Romani</h1>
+                <h1 class="lang-en">🍝 Best Roman Restaurants</h1>
+                <p class="lang-it">Scopri l'autentica cucina tradizionale di Roma</p>
+                <p class="lang-en">Discover authentic traditional Roman cuisine</p>
+            </div>
+
+            <div class="restaurants-grid">
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Da Enzo al 29</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.8</div>
+                    </div>
+                    <div class="address">Via dei Vascellari, 29, Trastevere</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Carbonara</span>
+                            <span class="dish">Amatriciana</span>
+                            <span class="dish">Cacio e Pepe</span>
+                            <span class="dish">Saltimbocca</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+dei+Vascellari+29+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Checchino dal 1887</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.7</div>
+                    </div>
+                    <div class="address">Via di Monte Testaccio, 30, Testaccio</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Coda alla Vaccinara</span>
+                            <span class="dish">Trippa alla Romana</span>
+                            <span class="dish">Abbacchio</span>
+                            <span class="dish">Maritozzi</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+di+Monte+Testaccio+30+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Armando al Pantheon</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.6</div>
+                    </div>
+                    <div class="address">Salita de' Crescenzi, 31, Centro Storico</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Tonnarelli</span>
+                            <span class="dish">Saltimbocca</span>
+                            <span class="dish">Carciofi alla Giudia</span>
+                            <span class="dish">Supplì</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Salita+de+Crescenzi+31+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Flavio al Velavevodetto</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.9</div>
+                    </div>
+                    <div class="address">Via di Monte Testaccio, 97, Testaccio</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Carbonara</span>
+                            <span class="dish">Gricia</span>
+                            <span class="dish">Amatriciana</span>
+                            <span class="dish">Cacio e Pepe</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+di+Monte+Testaccio+97+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Da Felice</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.5</div>
+                    </div>
+                    <div class="address">Via Mastro Giorgio, 29, Testaccio</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Cacio e Pepe</span>
+                            <span class="dish">Pajata</span>
+                            <span class="dish">Abbacchio</span>
+                            <span class="dish">Carciofi</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+Mastro+Giorgio+29+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Piperno</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.4</div>
+                    </div>
+                    <div class="address">Via Monte de' Cenci, 9, Ghetto Ebraico</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Carciofi alla Giudia</span>
+                            <span class="dish">Coda alla Vaccinara</span>
+                            <span class="dish">Baccalà</span>
+                            <span class="dish">Maritozzi</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+Monte+de+Cenci+9+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Trattoria Monti</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.7</div>
+                    </div>
+                    <div class="address">Via di San Vito, 13, Esquilino</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Passatelli</span>
+                            <span class="dish">Tortellini</span>
+                            <span class="dish">Carbonara</span>
+                            <span class="dish">Tiramisù</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+di+San+Vito+13+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+
+                <div class="restaurant-card">
+                    <div class="restaurant-name">Il Sorpasso</div>
+                    <div class="rating">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-number">4.6</div>
+                    </div>
+                    <div class="address">Via Properzio, 31, Prati</div>
+                    <div class="specialties">
+                        <h4 class="lang-it">Specialità:</h4>
+                        <h4 class="lang-en">Specialties:</h4>
+                        <div class="dish-list">
+                            <span class="dish">Supplì</span>
+                            <span class="dish">Carbonara</span>
+                            <span class="dish">Maritozzi</span>
+                            <span class="dish">Trapizzino</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Via+Properzio+31+Roma" class="map-button" target="_blank">
+                        <span class="lang-it">📍 Vai su Maps</span>
+                        <span class="lang-en">📍 Open in Maps</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="restaurants-grid">
-            <div class="restaurant-card">
-                <div class="restaurant-name">Da Enzo al 29</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.8</div>
-                </div>
-                <div class="address">Via dei Vascellari, 29, Trastevere</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Carbonara</span>
-                        <span class="dish">Amatriciana</span>
-                        <span class="dish">Cacio e Pepe</span>
-                        <span class="dish">Saltimbocca</span>
-                    </div>
-                </div>
-                <a href="https://maps.google.com/?q=Via+dei+Vascellari+29+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
+        <!-- SEZIONE LUOGHI DA VISITARE -->
+        <div id="places" class="section">
+            <button class="back-button" onclick="showHomepage()">
+                <span class="lang-it">← Torna al Menu</span>
+                <span class="lang-en">← Back to Menu</span>
+            </button>
+
+            <div class="header">
+                <h1 class="lang-it">🏛️ Roma: Luoghi Imperdibili</h1>
+                <h1 class="lang-en">🏛️ Rome: Must-Visit Places</h1>
+                <p class="lang-it">I tesori della Città Eterna</p>
+                <p class="lang-en">Treasures of the Eternal City</p>
             </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Checchino dal 1887</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.7</div>
+            <!-- TESORI SEGRETI -->
+            <div class="category">
+                <div class="category-title">
+                    <span class="lang-it">🤫 Tesori Segreti di Roma</span>
+                    <span class="lang-en">🤫 Rome's Secret Treasures</span>
                 </div>
-                <div class="address">Via di Monte Testaccio, 30, Testaccio</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Coda alla Vaccinara</span>
-                        <span class="dish">Trippa alla Romana</span>
-                        <span class="dish">Abbacchio</span>
-                        <span class="dish">Maritozzi</span>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <div class="place-name">Il Buco della Serratura</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.9</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Piazza dei Cavalieri di Malta, Aventino</div>
+                        <div class="description lang-it">Un buco di serratura magico che inquadra perfettamente la cupola di San Pietro. Il segreto meglio custodito di Roma!</div>
+                        <div class="description lang-en">A magical keyhole that perfectly frames St. Peter's dome. Rome's best-kept secret!</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da sapere:</h4>
+                            <h4 class="lang-en">Good to know:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Vista Unica</span>
+                                <span class="highlight">Porta Verde</span>
+                                <span class="highlight">Sorpresa</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Piazza+dei+Cavalieri+di+Malta+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Quartiere Coppedè</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.6</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Via Tagliamento, Quartiere Trieste</div>
+                        <div class="description lang-it">Un quartiere fiabesco con architettura Art Nouveau incredibile. Sembra di essere in un film di Tim Burton!</div>
+                        <div class="description lang-en">A fairytale neighborhood with incredible Art Nouveau architecture. Like being in a Tim Burton movie!</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Arco di Giano</span>
+                                <span class="highlight">Palazzi Decorati</span>
+                                <span class="highlight">Fontana delle Rane</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Quartiere+Coppedè+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Palazzo Altemps - Bagni di Diocleziano</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.8</div>
+                        </div>
+                        <div class="price-info">€8</div>
+                        <div class="address">Via Enrico De Nicola, 78</div>
+                        <div class="description lang-it">Le antiche terme romane più grandi mai costruite, trasformate in museo. Chiostro mozzafiato che nessuno conosce.</div>
+                        <div class="description lang-en">The largest Roman baths ever built, transformed into a museum. Breathtaking cloister that nobody knows about.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Chiostro Michelangelo</span>
+                                <span class="highlight">Aula Ottagona</span>
+                                <span class="highlight">Statue Giganti</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Terme+di+Diocleziano+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Villa Torlonia</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.7</div>
+                        </div>
+                        <div class="price-info">€6</div>
+                        <div class="address">Via Nomentana, 70</div>
+                        <div class="description lang-it">Villa privata della famiglia Torlonia, poi residenza di Mussolini. Bunker segreto e catacombe ebraiche nascoste.</div>
+                        <div class="description lang-en">Private villa of the Torlonia family, then Mussolini's residence. Secret bunker and hidden Jewish catacombs.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Bunker Segreto</span>
+                                <span class="highlight">Casino Nobile</span>
+                                <span class="highlight">Catacombe</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Villa+Torlonia+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Isola Tiberina</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.5</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Isola Tiberina, Ponte Fabricio</div>
+                        <div class="description lang-it">L'unica isola naturale sul Tevere. Leggenda vuole sia nata dal grano buttato nel fiume dopo la cacciata di Tarquinio.</div>
+                        <div class="description lang-en">The only natural island on the Tiber. Legend says it was born from grain thrown into the river after Tarquin's exile.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Ponte Romano</span>
+                                <span class="highlight">San Bartolomeo</span>
+                                <span class="highlight">Vista Tevere</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Isola+Tiberina+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Centrale Montemartini</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.9</div>
+                        </div>
+                        <div class="price-info">€8</div>
+                        <div class="address">Via Ostiense, 106</div>
+                        <div class="description lang-it">Statue classiche in una ex-centrale elettrica. Contrasto incredibile tra arte antica e archeologia industriale!</div>
+                        <div class="description lang-en">Classical statues in a former power plant. Incredible contrast between ancient art and industrial archaeology!</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Statue + Macchinari</span>
+                                <span class="highlight">Foto Uniche</span>
+                                <span class="highlight">Mostre Temporanee</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Centrale+Montemartini+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
                     </div>
                 </div>
-                <a href="https://maps.google.com/?q=Via+di+Monte+Testaccio+30+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
             </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Armando al Pantheon</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.6</div>
+            <!-- MONUMENTI ICONICI -->
+            <div class="category">
+                <div class="category-title">
+                    <span class="lang-it">🏛️ Monumenti Iconici</span>
+                    <span class="lang-en">🏛️ Iconic Monuments</span>
                 </div>
-                <div class="address">Salita de' Crescenzi, 31, Centro Storico</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Tonnarelli</span>
-                        <span class="dish">Saltimbocca</span>
-                        <span class="dish">Carciofi alla Giudia</span>
-                        <span class="dish">Supplì</span>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <div class="place-name">Colosseo</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.9</div>
+                        </div>
+                        <div class="price-info">€16 - €22</div>
+                        <div class="address">Piazza del Colosseo, 1</div>
+                        <div class="description lang-it">L'anfiteatro più famoso del mondo, simbolo di Roma. Prenota in anticipo per evitare code!</div>
+                        <div class="description lang-en">The world's most famous amphitheater, symbol of Rome. Book in advance to skip the lines!</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Arena</span>
+                                <span class="highlight">Sotterranei</span>
+                                <span class="highlight">Piano Superiore</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Colosseo+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Pantheon</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.9</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Piazza della Rotonda</div>
+                        <div class="description lang-it">Il tempio romano meglio conservato. La cupola è un capolavoro dell'architettura antica.</div>
+                        <div class="description lang-en">The best-preserved Roman temple. The dome is a masterpiece of ancient architecture.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Cupola</span>
+                                <span class="highlight">Oculus</span>
+                                <span class="highlight">Tomba di Raffaello</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Pantheon+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Fontana di Trevi</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.7</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Piazza di Trevi</div>
+                        <div class="description lang-it">La fontana più famosa al mondo. Lancia una moneta per tornare a Roma!</div>
+                        <div class="description lang-en">The world's most famous fountain. Throw a coin to return to Rome!</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Nettuno</span>
+                                <span class="highlight">Cavalli</span>
+                                <span class="highlight">Alba/Tramonto</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Fontana+di+Trevi+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Foro Romano</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.8</div>
+                        </div>
+                        <div class="price-info">€16 (combinato con Colosseo)</div>
+                        <div class="address">Via della Salara Vecchia, 5/6</div>
+                        <div class="description lang-it">Il cuore dell'antica Roma. Cammina dove camminarono imperatori e senatori.</div>
+                        <div class="description lang-en">The heart of ancient Rome. Walk where emperors and senators once walked.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Via Sacra</span>
+                                <span class="highlight">Tempio di Vesta</span>
+                                <span class="highlight">Arco di Tito</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Foro+Romano+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
                     </div>
                 </div>
-                <a href="https://maps.google.com/?q=Salita+de+Crescenzi+31+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
             </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Flavio al Velavevodetto</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.9</div>
+            <!-- MUSEI -->
+            <div class="category">
+                <div class="category-title">
+                    <span class="lang-it">🎨 Musei Imperdibili</span>
+                    <span class="lang-en">🎨 Must-Visit Museums</span>
                 </div>
-                <div class="address">Via di Monte Testaccio, 97, Testaccio</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Carbonara</span>
-                        <span class="dish">Gricia</span>
-                        <span class="dish">Amatriciana</span>
-                        <span class="dish">Cacio e Pepe</span>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <div class="place-name">Musei Vaticani</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.8</div>
+                        </div>
+                        <div class="price-info">€17 - €25</div>
+                        <div class="address">Viale Vaticano</div>
+                        <div class="description lang-it">La più grande collezione d'arte del mondo. Casa della Cappella Sistina di Michelangelo.</div>
+                        <div class="description lang-en">The world's largest art collection. Home to Michelangelo's Sistine Chapel.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Cappella Sistina</span>
+                                <span class="highlight">Stanze di Raffaello</span>
+                                <span class="highlight">Pinacoteca</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Musei+Vaticani+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Musei Capitolini</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.6</div>
+                        </div>
+                        <div class="price-info">€15</div>
+                        <div class="address">Piazza del Campidoglio, 1</div>
+                        <div class="description lang-it">I musei più antichi del mondo con capolavori dell'arte romana antica.</div>
+                        <div class="description lang-en">The world's oldest museums with masterpieces of ancient Roman art.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Marco Aurelio</span>
+                                <span class="highlight">Lupa Capitolina</span>
+                                <span class="highlight">Tabularium</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Musei+Capitolini+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
                     </div>
                 </div>
-                <a href="https://maps.google.com/?q=Via+di+Monte+Testaccio+97+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
             </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Da Felice</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.5</div>
+            <!-- QUARTIERI AUTENTICI -->
+            <div class="category">
+                <div class="category-title">
+                    <span class="lang-it">🏘️ Quartieri Autentici</span>
+                    <span class="lang-en">🏘️ Authentic Neighborhoods</span>
                 </div>
-                <div class="address">Via Mastro Giorgio, 29, Testaccio</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Cacio e Pepe</span>
-                        <span class="dish">Pajata</span>
-                        <span class="dish">Abbacchio</span>
-                        <span class="dish">Carciofi</span>
+                <div class="places-grid">
+                    <div class="place-card">
+                        <div class="place-name">Trastevere</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.8</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Trastevere</div>
+                        <div class="description lang-it">Il quartiere più caratteristico di Roma, con vie medievali e vita notturna autentica.</div>
+                        <div class="description lang-en">Rome's most characteristic neighborhood, with medieval streets and authentic nightlife.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Santa Maria</span>
+                                <span class="highlight">Villa Farnesina</span>
+                                <span class="highlight">Mercato</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Trastevere+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="place-card">
+                        <div class="place-name">Campo de' Fiori</div>
+                        <div class="rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number">4.7</div>
+                        </div>
+                        <div class="price-info lang-it">Gratuito</div>
+                        <div class="price-info lang-en">Free</div>
+                        <div class="address">Piazza Campo de' Fiori</div>
+                        <div class="description lang-it">Piazza storica con mercato mattutino e vita notturna. Atmosfera autentica romana.</div>
+                        <div class="description lang-en">Historic square with morning market and nightlife. Authentic Roman atmosphere.</div>
+                        <div class="highlights">
+                            <h4 class="lang-it">Da non perdere:</h4>
+                            <h4 class="lang-en">Don't miss:</h4>
+                            <div class="highlight-list">
+                                <span class="highlight">Mercato Mattutino</span>
+                                <span class="highlight">Giordano Bruno</span>
+                                <span class="highlight">Aperitivo</span>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Campo+de+Fiori+Roma" class="map-button" target="_blank">
+                            <span class="lang-it">📍 Vai su Maps</span>
+                            <span class="lang-en">📍 Open in Maps</span>
+                        </a>
                     </div>
                 </div>
-                <a href="https://maps.google.com/?q=Via+Mastro+Giorgio+29+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
+            </div>
+        </div>
+
+        <!-- SEZIONE NUMERI UTILI -->
+        <div id="emergency" class="section">
+            <button class="back-button" onclick="showHomepage()">
+                <span class="lang-it">← Torna al Menu</span>
+                <span class="lang-en">← Back to Menu</span>
+            </button>
+
+            <div class="header">
+                <h1 class="lang-it">🚨 Numeri Utili</h1>
+                <h1 class="lang-en">🚨 Emergency Numbers</h1>
+                <p class="lang-it">Contatti essenziali per il vostro soggiorno</p>
+                <p class="lang-en">Essential contacts for your stay</p>
             </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Piperno</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.4</div>
+            <div class="emergency-grid">
+                <div class="emergency-card">
+                    <span class="emergency-icon">🆘</span>
+                    <div class="emergency-title lang-it">Emergenze Generali</div>
+                    <div class="emergency-title lang-en">General Emergency</div>
+                    <a href="tel:112" class="emergency-number">112</a>
+                    <div class="emergency-description lang-it">Numero unico europeo per tutte le emergenze. Funziona 24h/24.</div>
+                    <div class="emergency-description lang-en">European single number for all emergencies. Works 24/7.</div>
                 </div>
-                <div class="address">Via Monte de' Cenci, 9, Ghetto Ebraico</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Carciofi alla Giudia</span>
-                        <span class="dish">Coda alla Vaccinara</span>
-                        <span class="dish">Baccalà</span>
-                        <span class="dish">Maritozzi</span>
-                    </div>
-                </div>
-                <a href="https://maps.google.com/?q=Via+Monte+de+Cenci+9+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
-            </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Trattoria Monti</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.7</div>
+                <div class="emergency-card">
+                    <span class="emergency-icon">🚓</span>
+                    <div class="emergency-title lang-it">Polizia di Stato</div>
+                    <div class="emergency-title lang-en">State Police</div>
+                    <a href="tel:113" class="emergency-number">113</a>
+                    <div class="emergency-description lang-it">Per sicurezza pubblica, crimini, emergenze varie.</div>
+                    <div class="emergency-description lang-en">For public safety, crimes, various emergencies.</div>
                 </div>
-                <div class="address">Via di San Vito, 13, Esquilino</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Passatelli</span>
-                        <span class="dish">Tortellini</span>
-                        <span class="dish">Carbonara</span>
-                        <span class="dish">Tiramisù</span>
-                    </div>
-                </div>
-                <a href="https://maps.google.com/?q=Via+di+San+Vito+13+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
-            </div>
 
-            <div class="restaurant-card">
-                <div class="restaurant-name">Il Sorpasso</div>
-                <div class="rating">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-number">4.6</div>
+                <div class="emergency-card">
+                    <span class="emergency-icon">🚑</span>
+                    <div class="emergency-title lang-it">Ambulanza</div>
+                    <div class="emergency-title lang-en">Ambulance</div>
+                    <a href="tel:118" class="emergency-number">118</a>
+                    <div class="emergency-description lang-it">Emergenze mediche, incidenti, primo soccorso.</div>
+                    <div class="emergency-description lang-en">Medical emergencies, accidents, first aid.</div>
                 </div>
-                <div class="address">Via Properzio, 31, Prati</div>
-                <div class="specialties">
-                    <h4 class="lang-it">Specialità:</h4>
-                    <h4 class="lang-en">Specialties:</h4>
-                    <div class="dish-list">
-                        <span class="dish">Supplì</span>
-                        <span class="dish">Carbonara</span>
-                        <span class="dish">Maritozzi</span>
-                        <span class="dish">Trapizzino</span>
-                    </div>
+
+                <div class="emergency-card">
+                    <span class="emergency-icon">🚒</span>
+                    <div class="emergency-title lang-it">Vigili del Fuoco</div>
+                    <div class="emergency-title lang-en">Fire Department</div>
+                    <a href="tel:115" class="emergency-number">115</a>
+                    <div class="emergency-description lang-it">Incendi, soccorso tecnico, emergenze urbane.</div>
+                    <div class="emergency-description lang-en">Fires, technical rescue, urban emergencies.</div>
                 </div>
-                <a href="https://maps.google.com/?q=Via+Properzio+31+Roma" class="map-button" target="_blank">
-                    <span class="lang-it">📍 Vai su Maps</span>
-                    <span class="lang-en">📍 Open in Maps</span>
-                </a>
+
+                <div class="emergency-card">
+                    <span class="emergency-icon">🚔</span>
+                    <div class="emergency-title lang-it">Carabinieri</div>
+                    <div class="emergency-title lang-en">Carabinieri</div>
+                    <a href="tel:112" class="emergency-number">112</a>
+                    <div class="emergency-description lang-it">Forze dell'ordine, sicurezza, controllo territorio.</div>
+                    <div class="emergency-description lang-en">Law enforcement, security, territory control.</div>
+                </div>
+
+                <div class="emergency-card">
+                    <span class="emergency-icon">🏥</span>
+                    <div class="emergency-title lang-it">Guardia Medica</div>
+                    <div class="emergency-title lang-en">Medical Guard</div>
+                    <a href="tel:0658201" class="emergency-number">06 5820 1</a>
+                    <div class="emergency-description lang-it">Assistenza medica notturna e festiva.</div>
+                    <div class="emergency-description lang-en">Night and holiday medical assistance.</div>
+                </div>
+
+                <div class="emergency-card">
+                    <span class="emergency-icon">🚕</span>
+                    <div class="emergency-title lang-it">Taxi Roma</div>
+                    <div class="emergency-title lang-en">Taxi Rome</div>
+                    <a href="tel:063570" class="emergency-number">06 35 70</a>
+                    <div class="emergency-description lang-it">Servizio taxi ufficiale di Roma. 24h/24.</div>
+                    <div class="emergency-description lang-en">Official Rome taxi service. 24/7.</div>
+                </div>
+
+                <div class="emergency-card">
+                    <span class="emergency-icon">🏛️</span>
+                    <div class="emergency-title lang-it">Polizia Municipale</div>
+                    <div class="emergency-title lang-en">Municipal Police</div>
+                    <a href="tel:0667691" class="emergency-number">06 6769 1</a>
+                    <div class="emergency-description lang-it">Vigili urbani, infrazioni stradali, servizi locali.</div>
+                    <div class="emergency-description lang-en">Traffic police, road violations, local services.</div>
+                </div>
+
+                <div class="emergency-card">
+                    <span class="emergency-icon">ℹ️</span>
+                    <div class="emergency-title lang-it">Informazioni Turistiche</div>
+                    <div class="emergency-title lang-en">Tourist Information</div>
+                    <a href="tel:0608" class="emergency-number">060608</a>
+                    <div class="emergency-description lang-it">Informazioni su Roma, eventi, trasporti, musei.</div>
+                    <div class="emergency-description lang-en">Information about Rome, events, transport, museums.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MESSAGGIO RECENSIONI -->
+        <div class="review-request">
+            <div class="review-reminder" onclick="toggleReviewCard()">
+                <div class="review-reminder-content">
+                    <span class="review-icon-small">💖</span>
+                    <span class="lang-it">Ti è piaciuto il soggiorno? Lascia una recensione!</span>
+                    <span class="lang-en">Did you enjoy your stay? Leave a review!</span>
+                    <span class="review-arrow">🔽</span>
+                </div>
+            </div>
+            
+            <div class="review-card" id="reviewCard">
+                <div class="review-icon">💖</div>
+                <h3 class="lang-it">Vi è piaciuto il soggiorno?</h3>
+                <h3 class="lang-en">Did you enjoy your stay?</h3>
+                <p class="lang-it">Se il <strong>Colosseum Apartment</strong> ha reso speciale la vostra visita a Roma, ci farebbe molto piacere se poteste lasciare una piccola recensione. Il vostro feedback ci aiuta a migliorare e aiuta altri viaggiatori a scoprire la nostra casa!</p>
+                <p class="lang-en">If <strong>Colosseum Apartment</strong> made your visit to Rome special, we'd be delighted if you could leave a small review. Your feedback helps us improve and helps other travelers discover our home!</p>
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-thanks lang-it"><em>Grazie di cuore per aver scelto di soggiornare con noi!</em></p>
+                <p class="review-thanks lang-en"><em>Thank you from the heart for choosing to stay with us!</em></p>
             </div>
         </div>
 
         <div class="footer">
-            <p class="lang-it">🇮🇹 Buon appetito! La vera Roma a tavola 🇮🇹</p>
-            <p class="lang-en">🇮🇹 Buon appetito! Authentic Rome at the table 🇮🇹</p>
+            <p class="lang-it">🇮🇹 Buon soggiorno a Roma! 🇮🇹</p>
+            <p class="lang-en">🇮🇹 Have a great stay in Rome! 🇮🇹</p>
             <p class="lang-it">Aggiornato: Agosto 2025</p>
             <p class="lang-en">Updated: August 2025</p>
         </div>
@@ -465,6 +1309,44 @@
                 italianElements.forEach(el => el.style.display = 'block');
                 currentLang = 'it';
                 document.documentElement.lang = 'it';
+            }
+        }
+
+        function showSection(sectionName) {
+            // Hide homepage
+            document.getElementById('homepage').style.display = 'none';
+            
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+        }
+
+        function showHomepage() {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show homepage
+            document.getElementById('homepage').style.display = 'block';
+        }
+
+        function toggleReviewCard() {
+            const reviewCard = document.getElementById('reviewCard');
+            const reminder = document.querySelector('.review-reminder');
+            
+            if (reviewCard.style.display === 'none' || reviewCard.style.display === '') {
+                reviewCard.style.display = 'block';
+                reminder.classList.add('expanded');
+            } else {
+                reviewCard.style.display = 'none';
+                reminder.classList.remove('expanded');
             }
         }
     </script>
